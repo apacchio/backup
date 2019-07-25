@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 01:09:00 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/22 01:27:58 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/20 22:10:54 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/25 01:25:45 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
-{	
-	if (index  == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2))));
-}
+#include <stdlib.h>
 
-#include <stdio.h>
-
-int		main()
+int		*ft_range(int min, int max)
 {
-	int index;
-	index = 7;
-	printf("%d\n", ft_fibonacci(index));
-}
+	int *array;
+	int nav;
 
+	nav = 0;
+	if (min >= max)
+		return (NULL);
+	if (!(array = malloc(sizeof(int) * (max - min))))
+		return (NULL);
+	while (max > min)
+		array[nav++] = min++;
+	return (array);
+}

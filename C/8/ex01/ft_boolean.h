@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_boolean.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 01:09:00 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/22 01:27:58 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/23 07:54:21 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/24 09:09:28 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
-{	
-	if (index  == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2))));
-}
+#ifndef FT_BOOLEAN_H
+# define FT_BOOLEAN_H
+# include <unistd.h>
 
-#include <stdio.h>
-
-int		main()
-{
-	int index;
-	index = 7;
-	printf("%d\n", ft_fibonacci(index));
-}
-
+typedef int		t_bool;
+# define EVEN(nbr) nbr % 2 == 0
+# define TRUE 0
+# define FALSE 1
+# define EVEN_MSG "I have an even number of arguments\n"
+# define ODD_MSG "I have an odd number of arguments\n"
+# define SUCCESS 0
+#endif

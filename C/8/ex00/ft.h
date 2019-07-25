@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 01:09:00 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/22 01:27:58 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/23 07:37:15 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/23 07:47:31 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
-{	
-	if (index  == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2))));
-}
+#ifndef FT_H
+# define FT_H
 
-#include <stdio.h>
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
-int		main()
-{
-	int index;
-	index = 7;
-	printf("%d\n", ft_fibonacci(index));
-}
-
+#endif

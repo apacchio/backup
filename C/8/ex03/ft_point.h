@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 17:15:06 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/20 17:27:40 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/23 11:05:33 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/24 09:14:11 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_POINT_H
+# define FT_POINT_H
 
-char *ft_strdup(char *src)
+typedef struct	s_point
 {
+	int x;
+	int y;
+}				t_point;
 
-	return (&src);
-}
-
-#include <string.h>
-#include <stdio.h>
-
-int		main()
-{
-	char s1[] = "the new Wildlife EP is wicked";
-
-	printf("%p\n", strdup(s1));
-	printf("%p\n", ft_strdup(s1));
-}
+#endif

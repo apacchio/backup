@@ -1,43 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat2.c                                       :+:      :+:    :+:   */
+/*   peshuun.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 21:45:20 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/21 06:09:09 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/22 20:07:40 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/22 22:07:18 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcat(char *dest, char *src)
+#include <stdio.h>
+#include <unistd.h>
+
+void	ft_peshuun(char *str, char r, char b)
 {
 	int i;
-	int j;
-
 	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
+
+	while (str[i] != '\0')
 	{
-		dest[i + j] = src[j];
-		j++;
+		if ( str[i] == r)
+			str[i] = b;
+		i++;
 	}
-	return (dest);
 }
 
-#include <stdio.h>
-#include <string.h>
-
-int		main()
+int		main(int argc, char **argv)
 {
-	char s1[50] = "vive";
-	char s2[40] = "pusheen";
-	char s3[30] = "vive";
-	char s4[20] = "pusheen";
+	char *str = argv[1];
 
-	printf("expectation|%s\n", strcat(s1, s2));
-	printf("reality|%s\n", ft_strcat(s3, s4));
-	return (0);
-}	
+	if (argc == 4)
+	{
+		ft_peshuun(str, *argv[2], *argv[3]);
+		while (*str)
+		{
+			write(1, &(*str), 1);
+			str++;
+		}
+	}
+	write (1,"\n", 1);
+	return (0);	
+}
+

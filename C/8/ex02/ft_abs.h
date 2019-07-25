@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 01:09:00 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/22 01:27:58 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/23 09:15:03 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/24 09:10:38 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
-{	
-	if (index  == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2))));
-}
-
-#include <stdio.h>
-
-int		main()
-{
-	int index;
-	index = 7;
-	printf("%d\n", ft_fibonacci(index));
-}
-
+#ifndef FT_ABS_H
+# define FT_ABS_H
+# define ABS(Value) ((Value < 0) ? -Value : Value)
+#endif

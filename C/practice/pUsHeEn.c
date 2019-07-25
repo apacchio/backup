@@ -1,43 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat2.c                                       :+:      :+:    :+:   */
+/*   pUsHeEn.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 21:45:20 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/21 06:09:09 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/22 23:39:47 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/23 00:17:27 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcat(char *dest, char *src)
+#include <unistd.h>
+
+void	ft_pUsHeEn(char *str)
 {
 	int i;
-	int j;
-
 	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
+
+	while (str[i] != '\0')
 	{
-		dest[i + j] = src[j];
-		j++;
+		if (str[i] >= 65 && str[i] <= 90)
+			str[i] += 32;
+		else if (str[i] >= 97 && str[i] <= 122)
+			str[i] -= 32;
+		i++;
 	}
-	return (dest);
 }
 
-#include <stdio.h>
-#include <string.h>
-
-int		main()
+int		main(int argc, char **argv)
 {
-	char s1[50] = "vive";
-	char s2[40] = "pusheen";
-	char s3[30] = "vive";
-	char s4[20] = "pusheen";
+	char *str = argv[1];
 
-	printf("expectation|%s\n", strcat(s1, s2));
-	printf("reality|%s\n", ft_strcat(s3, s4));
+	if (argc ==2)
+	{
+		ft_pUsHeEn(str);
+		while (*str)
+		{
+			write(1, &(*str), 1);
+			str++;
+		}
+	}
+	write (1, "\n", 1);
 	return (0);
-}	
+}
+
+

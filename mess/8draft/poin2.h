@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/18 01:09:00 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/22 01:27:58 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/23 11:05:33 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/23 23:07:39 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
-{	
-	if (index  == 0)
-		return (0);
-	if (index == 1)
-		return (1);
-	return (((ft_fibonacci(index - 1)) + (ft_fibonacci(index - 2))));
-}
+#ifndef FT_POINT
+# define FT_POINT
 
-#include <stdio.h>
-
-int		main()
+struct s_point
 {
-	int index;
-	index = 7;
-	printf("%d\n", ft_fibonacci(index));
-}
+	int x;
+	int y;
+	int tab[20][25];
+	
+}				t_point;
 
+#define point tab
+
+
+#endif

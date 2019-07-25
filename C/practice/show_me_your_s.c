@@ -1,43 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat2.c                                       :+:      :+:    :+:   */
+/*   show_me_your_s.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/15 21:45:20 by apacchio          #+#    #+#             */
-/*   Updated: 2019/07/21 06:09:09 by apacchio         ###   ########.fr       */
+/*   Created: 2019/07/22 02:51:47 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/22 04:04:56 by apacchio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcat(char *dest, char *src)
-{
-	int i;
-	int j;
+#include <stdio.h>
+#include <unistd.h>
 
+void	ft_show_me_your_s(char *str)
+{
+	int i;;
 	i = 0;
-	j = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[j] != '\0')
+
+	while (str[i] != '\0')
 	{
-		dest[i + j] = src[j];
-		j++;
+		if (str[i] == 115)
+		{;
+			write(1, "SHMYS", 5);
+			break;
+		}
+		i++;
 	}
-	return (dest);
+	if (str[i] == '\0')
+		write(1, "tanguy est une pomme de terre", 29);
+
+}	 
+
+int		main(int argc, char **argv)
+{
+	(void) argc;
+	if (argc == 2) 
+		ft_show_me_your_s(argv[1]);
+	else
+		write(1, "\n", 1);
+	return (0);
 }
 
-#include <stdio.h>
-#include <string.h>
-
-int		main()
-{
-	char s1[50] = "vive";
-	char s2[40] = "pusheen";
-	char s3[30] = "vive";
-	char s4[20] = "pusheen";
-
-	printf("expectation|%s\n", strcat(s1, s2));
-	printf("reality|%s\n", ft_strcat(s3, s4));
-	return (0);
-}	

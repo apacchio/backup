@@ -1,0 +1,145 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: apacchio <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/24 22:41:15 by apacchio          #+#    #+#             */
+/*   Updated: 2019/07/24 22:41:43 by apacchio         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int ft_strlen(char *str)
+{
+	int len;
+
+	len = 0;
+	while (str != NULL && *str++ != '\0')
+	{
+		len++;
+	}
+	return len;
+}
+
+int get_final_string_length(int size, char **strs, char *sep)
+{
+	int i;
+	int final_string_length;
+
+	i = 0;
+	final_string_length = 0;
+
+	while (i < size)
+	{
+		final_string_length += ft_strlen(strs[i]);
+		i++;
+	}
+	printf("final string length so far (all strings from strs): %i\n", final_string_length);
+	if (size != 0)
+	{
+		final_string_length += ft_strlen(sep) * (size -1);
+	}
+	final_string_length += 1; // '\0'
+	printf("final string length (all strings from strs + separator + \\0): %i\n", final_string_length);
+	return final_string_length;
+}
+
+void fill_final_string(int size, char **strs, char *sep, int final_string_length, char *joined_str)
+{
+	int i;
+	int final_string_index;
+	int current_array_string_index;
+	int sep_index;
+
+	i = 0;
+	// loop on each string from the strs string array
+	//     while (i < size)
+	//         {
+	//                 // start looping from each character
+	//                         current_array_string_index = 0;
+	//                                 // copy each char from the current string
+	//                                  
+	//                                          printf("processing string %d: %s\n", i, strs[i]);
+	//                                                  while (strs[i][current_array_string_index] != '\0')
+	//                                                          {
+	//                                                                      printf("copying char: %c\n", strs[i][current_array_string_index]);
+	//                                                                                  joined_str[final_string_index] = strs[i][current_array_string_index];
+	//                                                                                              current_array_string_index++; // process next char of current string
+	//                                                                                                          final_string_index++; // process next char of joined_str
+	//                                                                                                                  }
+	//                                                                                                                   
+	//                                                                                                                           // only add separators if the current string isn't the last one from the
+	//                                                                                                                                   // array
+	//                                                                                                                                           // if there are 3 strings, the last string is the one at strs[2]
+	//                                                                                                                                                   if (i < size - 1)
+	//                                                                                                                                                           {
+	//                                                                                                                                                                       sep_index = 0;
+	//                                                                                                                                                                                   printf("processing separator: %s\n", sep);
+	//                                                                                                                                                                                               while (sep[sep_index] != '\0')
+	//                                                                                                                                                                                                           {
+	//                                                                                                                                                                                                                           printf("copying char: %c\n", sep[sep_index]);
+	//                                                                                                                                                                                                                                           joined_str[final_string_index] = sep[sep_index];
+	//                                                                                                                                                                                                                                                           sep_index++; // process next char of separator
+	//                                                                                                                                                                                                                                                                           final_string_index++; // process next char of joined_str
+	//                                                                                                                                                                                                                                                                                       }
+	//                                                                                                                                                                                                                                                                                               }
+	//                                                                                                                                                                                                                                                                                                       i++; // process the next string
+	//                                                                                                                                                                                                                                                                                                           }
+	//                                                                                                                                                                                                                                                                                                               joined_str[final_string_index] = '\0';
+	//                                                                                                                                                                                                                                                                                                               }
+	//                                                                                                                                                                                                                                                                                                                
+	//                                                                                                                                                                                                                                                                                                                 
+	//                                                                                                                                                                                                                                                                                                                 char *ft_strjoin(int size, char **strs, char *sep)
+	//                                                                                                                                                                                                                                                                                                                 {
+	//                                                                                                                                                                                                                                                                                                                     int i;
+	//                                                                                                                                                                                                                                                                                                                         int final_string_length;
+	//                                                                                                                                                                                                                                                                                                                             int current_array_string_index;
+	//                                                                                                                                                                                                                                                                                                                                 char *joined_str;
+	//                                                                                                                                                                                                                                                                                                                                  
+	//                                                                                                                                                                                                                                                                                                                                   
+	//                                                                                                                                                                                                                                                                                                                                    
+	//                                                                                                                                                                                                                                                                                                                                        // add error checks here:
+	//                                                                                                                                                                                                                                                                                                                                            // - check if sep != NULL
+	//                                                                                                                                                                                                                                                                                                                                                // - check if size == (sizeof(strs) / sizeof(char *))
+	//                                                                                                                                                                                                                                                                                                                                                 
+	//                                                                                                                                                                                                                                                                                                                                                     final_string_length = get_final_string_length(size, strs, sep);
+	//                                                                                                                                                                                                                                                                                                                                                         // allocate memory for a string (char *) of `final_string_length` characters
+	//                                                                                                                                                                                                                                                                                                                                                             joined_str = malloc(final_string_length * sizeof(char));
+	//                                                                                                                                                                                                                                                                                                                                                              
+	//                                                                                                                                                                                                                                                                                                                                                                  // start filling the new string
+	//                                                                                                                                                                                                                                                                                                                                                                      fill_final_string(size, strs, sep, final_string_length, joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                          return joined_str;
+	//                                                                                                                                                                                                                                                                                                                                                                          }
+	//                                                                                                                                                                                                                                                                                                                                                                           
+	//                                                                                                                                                                                                                                                                                                                                                                           int  main(void)
+	//                                                                                                                                                                                                                                                                                                                                                                           {
+	//                                                                                                                                                                                                                                                                                                                                                                               char *strs[] = {
+	//                                                                                                                                                                                                                                                                                                                                                                                       "to",
+	//                                                                                                                                                                                                                                                                                                                                                                                               "tu",
+	//                                                                                                                                                                                                                                                                                                                                                                                                       "ta"
+	//                                                                                                                                                                                                                                                                                                                                                                                                           };
+	//                                                                                                                                                                                                                                                                                                                                                                                                               char *joined_str;
+	//                                                                                                                                                                                                                                                                                                                                                                                                                
+	//                                                                                                                                                                                                                                                                                                                                                                                                                    joined_str = ft_strjoin(3, strs, "++");
+	//                                                                                                                                                                                                                                                                                                                                                                                                                        printf("joined string: %s\n", joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                            free(joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                             
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                 joined_str = ft_strjoin(0, strs, "++");
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                     printf("joined string: %s\n", joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                         free(joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                          
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                              //// segfaults if we don't check that size == sizeof(strs) / sizeof(char *)
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                  //joined_str = ft_strjoin(4, strs, "-------------");
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                      //printf("joined string: %s\n", joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                          //free(joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                               //// segfaults if we don't check that separator is != NULL
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                                   //joined_str = ft_strjoin(3, strs, NULL);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                                       //printf("joined string: %s\n", joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                                           //free(joined_str);
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                                               return 0;
+	//                                                                                                                                                                                                                                                                                                                                                                                                                                                                               }
